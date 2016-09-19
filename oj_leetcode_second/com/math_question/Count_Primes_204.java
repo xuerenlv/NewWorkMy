@@ -5,12 +5,12 @@ public class Count_Primes_204 {
 	public static void main(String[] args) {
 		// 两种方法通过对比，可以发现相差很大
 		long l1 = System.currentTimeMillis();
-		int i1 = new Solution_Count_Primes_204().countPrimes_accepted(99999999);
+		int i1 = new Solution_Count_Primes_204().countPrimes_accepted(100);
 		long l2 = System.currentTimeMillis();
 		System.out.println(i1 + "-------" + (l2 - l1));
 
 		long l3 = System.currentTimeMillis();
-		int i2 = new Solution_Count_Primes_204().countPrimes_overtime(99999999);
+		int i2 = new Solution_Count_Primes_204().countPrimes_overtime(100);
 		long l4 = System.currentTimeMillis();
 
 		System.out.println(i1 + "   " + i2);

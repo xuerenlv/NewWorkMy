@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Longest_Increasing_Subsequence_300 {
     public static void main(String[] a){
-        int[] nums = {3,5,6,2,5,4,19,5,6,7,12};
+        int[] nums = {1,7,3,5,9,4,8};
 
         System.out.println(new Solution_Longest_Increasing_Subsequence_300().lengthOfLIS(nums));
     }
@@ -21,9 +21,10 @@ class Solution_Longest_Increasing_Subsequence_300 {
         ArrayList<Integer> con = new ArrayList<>();
         con.add(nums[0]);
         for(int i=1;i<nums.length;i++){
+        	System.out.println(con.toString());
             if(nums[i]<=con.get(0)){
                 con.set(0,nums[i]);
-            }else if(nums[i]>=con.get(con.size()-1)){
+            }else if(nums[i]>=con.get(con.size()-1)){	
                 con.add(nums[i]);
             }else{
                 int j=0;

@@ -6,7 +6,7 @@ import java.util.List;
 public class PermulationWithDuplicate {
 
 	public static void main(String[] args) {
-//		System.out.println(SolutionPermulationWithDuplicate.permulationNoDuplicate("aab").toString());
+		// System.out.println(SolutionPermulationWithDuplicate.permulationNoDuplicate("aab").toString());
 		new PermutationOther().permutation("12345");
 	}
 
@@ -79,7 +79,7 @@ class PermutationOther {
 			start--;
 		if (start == 0)
 			return false;
-		while (data[start - 1] > data[end])
+		while (data[end] < data[start - 1])
 			end--;
 
 		swap(data, start - 1, end);
