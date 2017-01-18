@@ -39,4 +39,23 @@ class Solution_Combination_Sum_IV_377 {
 		}
 		return res[target];
 	}
+	
+//	public int combinationSum_dp(int[] nums, int target) {
+//		Arrays.sort(nums);
+//		
+//		int[][] res = new int[target + 1][nums.length+1];
+//		for (int i = 1; i < res.length; i++) {
+//			for(int j=1;j<nums.length;j++){
+//				if (nums[j] > i){
+//					res[i][j] = res[i][j-1];
+//					break;
+//				}else if (nums[j] == i)
+//					res[i][j] = res[i-1][j]+1;
+//				else
+//					res[i][j] = res[i-nums[j]][j]+res[nums[j]][j];
+//			}
+//		}
+//		
+//		return res[target][nums.length];
+//	}
 }

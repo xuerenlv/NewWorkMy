@@ -48,7 +48,6 @@ class Solution_Regular_Expression_Matching_10 {
 				if(p.charAt(j-1) != '*'){
 					dp[i][j] = dp[i-1][j-1] && (p.charAt(j-1)==s.charAt(i-1) || p.charAt(j-1)=='.');
 				}else{
-					// 对应 对 前一个字符 匹配多次  ((s.charAt(i - 1) == p.charAt(j - 2) || '.' == p.charAt(j - 2)) && dp[i - 1][j]);
 					dp[i][j] = dp[i][j-2] || ((s.charAt(i - 1) == p.charAt(j - 2) || '.' == p.charAt(j - 2)) && dp[i - 1][j]);
 				}
 			}

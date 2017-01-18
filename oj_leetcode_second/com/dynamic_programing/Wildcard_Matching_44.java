@@ -20,9 +20,7 @@ class Solution_Wildcard_Matching_44 {
 	public boolean isMatch_dp_2(String s, String p) {
 		boolean[][] match = new boolean[s.length() + 1][p.length() + 1];
 		match[0][0] = true;
-//		for (int i = 1; i < s.length(); i++) {
-//			match[i][0] = false;
-//		}
+
 		for (int i = 1; i <= p.length(); i++) {
 			if (p.charAt(i - 1) == '*') {
 				match[0][i] = match[0][i - 1];

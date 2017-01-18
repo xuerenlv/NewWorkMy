@@ -3,8 +3,8 @@ package com.dynamic_programming;
 public class CutRod {
 
 	public static void main(String[] args) {
-		int price[] = { 0, 1, 5, 3, 4, 5, 10, 2, 32, 11, 33 };
-		int n = 30;
+		int price[] = { 0, 1, 2, 3};
+		int n = 10;
 
 		System.out.println(cut_rod_bottom_up(price, n));
 		/*

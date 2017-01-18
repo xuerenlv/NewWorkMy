@@ -56,6 +56,8 @@ class Big_Heap {
 	// heapsize 为堆的长度
 	// index 为调整的开始位置
 	void maxHeap(int[] array, int heapSize, int index) {
+		if(index>=heapSize)
+			return;
 		int left = index * 2 + 1;
 		int right = index * 2 + 2;
 

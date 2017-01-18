@@ -26,7 +26,7 @@ class Solution_Combination_Sum_III_216 {
 	}
 
 	void find(int start, int n, int k, List<Integer> in, List<List<Integer>> re, int target) {
-		if (target <= 0) {
+		if (target <= 0 || start>n) {
 			if (k == 0 && target == 0)
 				re.add(new ArrayList<>(in));
 			return;
