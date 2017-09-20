@@ -11,7 +11,7 @@ public class Reverse_Linked_List_206 {
 		}
 
 		head = new Solution_Reverse_Linked_List_206().reverseList(head);
-		
+
 		for (ListNode p = head; p != null; p = p.next) {
 			System.out.println(p.val);
 		}
@@ -21,7 +21,7 @@ public class Reverse_Linked_List_206 {
 
 class Solution_Reverse_Linked_List_206 {
 
-	//头插法 accepted
+	// 头插法 accepted
 	public ListNode reverseList(ListNode head) {
 		if (head == null || head.next == null)
 			return head;

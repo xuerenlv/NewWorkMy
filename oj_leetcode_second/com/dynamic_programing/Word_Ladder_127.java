@@ -41,6 +41,7 @@ class Solution_Word_Ladder_127 {
 	}
 
 	// 就是一种广度优先遍历 ( 对于 队列 中存放的元素可以自己进行设计 )
+	// 队列中存放的元素是 word-index
 	public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
 		if (wordDict.size() == 0)
 			return 0;

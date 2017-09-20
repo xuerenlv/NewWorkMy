@@ -15,16 +15,15 @@ class Solution_Path_Sum_112 {
 		if (root == null) {
 			return false;
 		}
-		Stack<TreeNode> path = new Stack<>();
+		Stack<TreeNode> path = new Stack<>(); // 深度优先遍历
 		Stack<Integer> sub = new Stack<>();
 		path.push(root);
 		sub.push(root.val);
 		while (!path.isEmpty()) {
 			TreeNode temp = path.pop();
 			int tempVal = sub.pop();
-			if (temp.left == null && temp.right == null) {
-				if (tempVal == sum)
-					return true;
+			if (temp.left == null && temp.right == null && tempVal == sum) { // 如果当前节点是：叶子节点
+				return true;
 			} else {
 				if (temp.left != null) {
 					path.push(temp.left);

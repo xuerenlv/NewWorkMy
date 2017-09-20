@@ -11,6 +11,46 @@ public class Kth_Largest_Element_in_an_Array_215 {
 }
 
 class Solution_Kth_Largest_Element_in_an_Array_215 {
+
+	public int findKthLargest_2(int[] nums, int k) {
+		if (nums == null || nums.length == 0 || nums.length < k)
+			return Integer.MAX_VALUE;
+		return findKthLargest(nums, 0, nums.length - 1, nums.length - k);
+	}
+
+	public int findKthLargest(int[] nums, int start, int end, int k) {
+		int i = start;
+		int j = end;
+
+		int x = nums[i]; // 取左边元素为划分元素
+		while (i < j) {
+			while (i < j && nums[j] > x) {
+				j--;
+			}
+			if (i < j) {
+				nums[i] = nums[j];
+				i++;
+			}
+			while (i < j && nums[i] < x) {
+				i++;
+			}
+			if (i < j) {
+				nums[j] = nums[i];
+				j--;
+			}
+		}
+		nums[i] = x;
+
+		if (i == k) {
+			return x;
+		} else if (i < k) {
+			return findKthLargest(nums, i + 1, end, k);
+		} else {
+			return findKthLargest(nums, start, i - 1, k);
+		}
+	}
+
+	// ***********************************************************
 	public int findKthLargest(int[] nums, int k) {
 		int[] k_num = new int[k];
 

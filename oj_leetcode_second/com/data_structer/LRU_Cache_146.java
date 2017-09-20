@@ -11,6 +11,7 @@ public class LRU_Cache_146 {
 
 }
 
+// 双向链表（存放顺序信息）+HashMap（存放节点信息，便于查找） 实现 LRU cache
 ///////////////////////////////////////////// 双向链表 ///////////////// good
 ///////////////////////////////////////////// accepted
 class Pair {
@@ -70,7 +71,7 @@ class LRUCache {
 		key_to_point.put(key, cur);
 		put_to_head(cur);
 		size++;
-		if (size > capacity) {
+		if (size > capacity) { // 删除尾节点
 			cur = tail.pre;
 			key_to_point.remove(cur.key);
 			cur.pre.next = cur.next;

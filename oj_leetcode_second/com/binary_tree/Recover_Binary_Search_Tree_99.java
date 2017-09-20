@@ -79,7 +79,7 @@ class Solution_Recover_Binary_Search_Tree_99 {
 		}
 	}
 
-	void recursive(TreeNode root) {
+	void recursive(TreeNode root) { // 中序遍历是有序序列
 		if (root == null)
 			return;
 

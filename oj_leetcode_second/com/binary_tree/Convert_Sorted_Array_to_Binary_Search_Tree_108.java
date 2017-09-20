@@ -97,11 +97,6 @@ class Solution_Convert_Sorted_Array_to_Binary_Search_Tree_108 {
 			return null;
 		if (start == end)
 			return nodes.get(start);
-		// 这里注释掉，也是可行的
-		// if (start + 1 == end) {// 只有两个节点的时候，也符合退出条件
-		// nodes.get(start).right = nodes.get(end);
-		// return nodes.get(start);
-		// }
 		int mid = (start + end) / 2;
 		TreeNode root = nodes.get(mid);
 		root.right = gen_BST(mid + 1, end, nodes);

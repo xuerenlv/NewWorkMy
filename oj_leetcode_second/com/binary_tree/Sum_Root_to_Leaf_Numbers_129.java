@@ -20,7 +20,7 @@ class Solution_Sum_Root_to_Leaf_Numbers_129 {
 		}
 		if (root.left == null && root.right == null) {
 			return root_sum * 10 + root.val;
-		} else if (root.left != null && root.right != null) {
+		} else if (root.left != null && root.right != null) {// 左右子树均不为空的时候，取两边子树的生成数加和
 			return gen_sum(root.left, root_sum * 10 + root.val) + gen_sum(root.right, root_sum * 10 + root.val);
 		} else if (root.left != null && root.right == null) {
 			return gen_sum(root.left, root_sum * 10 + root.val);

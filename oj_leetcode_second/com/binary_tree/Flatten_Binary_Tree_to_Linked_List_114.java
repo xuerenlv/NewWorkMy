@@ -24,21 +24,23 @@ public class Flatten_Binary_Tree_to_Linked_List_114 {
 
 class Solution_Flatten_Binary_Tree_to_Linked_List_114 {
 	public void flatten_4(TreeNode root) {
-        if (root == null) return;
-        Stack<TreeNode> stk = new Stack<TreeNode>();
-        stk.push(root);
-        while (!stk.isEmpty()){
-            TreeNode curr = stk.pop();
-            if (curr.right!=null)  
-                 stk.push(curr.right);
-            if (curr.left!=null)  
-                 stk.push(curr.left);
-            if (!stk.isEmpty()) 
-                 curr.right = stk.peek();
-            curr.left = null;  // dont forget this!! 
-        }
-    }
-	//********************************************************************
+		if (root == null)
+			return;
+		Stack<TreeNode> stk = new Stack<TreeNode>();
+		stk.push(root);
+		while (!stk.isEmpty()) {
+			TreeNode curr = stk.pop();
+			if (curr.right != null)
+				stk.push(curr.right);
+			if (curr.left != null)
+				stk.push(curr.left);
+			if (!stk.isEmpty())
+				curr.right = stk.peek();
+			curr.left = null; // dont forget this!!
+		}
+	}
+
+	// ********************************************************************
 	public void flatten_3(TreeNode root) {
 		if (root == null)
 			return;
@@ -80,7 +82,6 @@ class Solution_Flatten_Binary_Tree_to_Linked_List_114 {
 		if (root == null)
 			return;
 		Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
-
 		vis_tree(root, queue);
 
 		int i = 0;
@@ -99,7 +100,7 @@ class Solution_Flatten_Binary_Tree_to_Linked_List_114 {
 
 	}
 
-	// 递归
+	// 递归，递归形式
 	void vis_tree(TreeNode root, Deque<TreeNode> queue) {
 		if (root == null) {
 			return;

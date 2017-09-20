@@ -30,7 +30,7 @@ class Solution_Minimum_Depth_of_Binary_Tree_111 {
 		int left = minDepth(root.left);
 		int right = minDepth(root.right);
 		// 若left或right为0，则只有一个了； 当两个都存在的时候才取min
-		// 不可以去掉
+		// 不可以去掉，，因为有一个为 0 ，不代表它是一个叶子节点，可能只是一边一直为 0
 		return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
 	}
 

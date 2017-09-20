@@ -16,6 +16,7 @@ class MinStack_better {
 	int min = Integer.MAX_VALUE;
 	Stack<Integer> stack = new Stack<Integer>();
 
+	// 就是当一个新的最小值的时候，把原最小值插入进栈
 	public void push(int x) {
 		if (x <= min) { // 当比min小的时候，先存储 min，再存储 相应的值
 			stack.push(min);

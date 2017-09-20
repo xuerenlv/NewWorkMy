@@ -3,8 +3,11 @@ package com.dynamic_programming;
 public class LargestCommonSequence_change {
 
 	public static void main(String[] args) {
-		String str1 = "a";
-		String str2 = "a";
+		String str1 = "abcde";
+		String str2 = "abcde";
+		
+//		String str1 = "acbnhhsaljfvbajbgliruaegbuierbgiuajhbdlchhhhhhhhhhhhhhhhdcberbvgiunrfhjklvnfdjvbalkvnfdjkvbfadklvjbfdkjvfadjvufdn";
+//		String str2 = "acbnhhsaljfvbajbgliruaegbuierbgiuajhbdlchhhhhhhhhhhhhhhhdcberbvgiunrfhjklvnfdjvbalkvnfdjkvbfadklvjbfdkjvfadjvufdns";
 
 		long start, end;
 		start = System.currentTimeMillis();
@@ -32,19 +35,19 @@ public class LargestCommonSequence_change {
 
 		System.out.println("last: " + ji_hao[len1][len2]);
 
-		// StringBuffer sb = new StringBuffer();
-		// print_lcs(ji_hao, s1, len1 - 1, s2, len2 - 1, sb);
-		// System.out.println(sb.toString() + " " + sb.length());
+		StringBuffer sb = new StringBuffer();
+		print_lcs(ji_hao, s1, len1, s2, len2, sb);
+		System.out.println(sb.reverse().toString() + " " + sb.length());
 
 		return ji_hao[len1][len2];
 	}
 
 	// 打印出最长公共子序列
 	static void print_lcs(int[][] ji_hao, char[] s1, int i, char[] s2, int j, StringBuffer re_str) {
-		if (i == -1 || j == -1)
+		if (i == 0 || j == 0)
 			return;
-		if (s1[i] == s2[j]) {
-			re_str.append(s1[i]);
+		if (s1[i - 1] == s2[j - 1]) {
+			re_str.append(s1[i - 1]);
 			print_lcs(ji_hao, s1, i - 1, s2, j - 1, re_str);
 		} else if (ji_hao[i - 1][j] > ji_hao[i][j - 1]) {
 			print_lcs(ji_hao, s1, i - 1, s2, j, re_str);

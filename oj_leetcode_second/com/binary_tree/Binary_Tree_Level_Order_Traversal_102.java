@@ -16,6 +16,7 @@ public class Binary_Tree_Level_Order_Traversal_102 {
 
 class Solution_Binary_Tree_Level_Order_Traversal_102 {
 
+	// 用一个高度 height 来标示内部的每一个list
 	public List<List<Integer>> levelOrder_3(TreeNode root) {
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
 		levelHelper(res, root, 0);

@@ -12,14 +12,13 @@ public class MergeSort {
 
 	// 归并排序 当只有一个元素的时候进行独立返回
 	public static int[] mergeSort(int[] nums, int start, int end) {
-		if (start < end) {
-			int mid = (start + end) / 2;
-			int[] arr_f = mergeSort(nums, start, mid);
-			int[] arr_s = mergeSort(nums, mid + 1, end);
-			return mergeArray(arr_f, arr_s);
-		} else {
+		if (start == end)
 			return new int[] { nums[start] };
-		}
+
+		int mid = (start + end) / 2;
+		int[] arr_f = mergeSort(nums, start, mid);
+		int[] arr_s = mergeSort(nums, mid + 1, end);
+		return mergeArray(arr_f, arr_s);
 	}
 
 	// 合并两个数组 在O（n）的情况之下

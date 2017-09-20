@@ -56,13 +56,13 @@ class Big_Heap {
 	// heapsize 为堆的长度
 	// index 为调整的开始位置
 	void maxHeap(int[] array, int heapSize, int index) {
-		if(index>=heapSize)
+		if (index >= heapSize)
 			return;
 		int left = index * 2 + 1;
 		int right = index * 2 + 2;
 
 		int largest = index;
-		if (left < heapSize && array[left] > array[index]) {
+		if (left < heapSize && array[left] > array[largest]) {
 			largest = left;
 		}
 
@@ -76,7 +76,7 @@ class Big_Heap {
 			array[index] = array[largest];
 			array[largest] = swap;
 
-			maxHeap(array, heapSize, largest);
+			maxHeap(array, heapSize, largest); // 继续向下调整
 		}
 	}
 }

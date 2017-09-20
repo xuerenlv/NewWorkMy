@@ -17,7 +17,7 @@ class Solution_Lowest_Common_Ancestor_of_a_Binary_Tree_236 {
 			return root;
 		TreeNode L = lowestCommonAncestor(root.left, p, q);
 		TreeNode R = lowestCommonAncestor(root.right, p, q);
-		if (L != null && R != null) // 两边各有一个
+		if (L != null && R != null) // 两边各有一个, 如果两边各有一个，那它肯定就是最 low 的祖先
 			return root;
 		return L != null ? L : R;
 	}

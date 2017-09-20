@@ -30,7 +30,7 @@ class Solution_Binary_Tree_Level_Order_Traversal_II_107 {
 		}
 		levelMaker(list, root.left, level + 1);
 		levelMaker(list, root.right, level + 1);
-		// 从后向前的获得
+		// 从下向上加，先建立 list ， 再往里面添加元素
 		list.get(list.size() - level - 1).add(root.val);
 	}
 
@@ -53,6 +53,7 @@ class Solution_Binary_Tree_Level_Order_Traversal_II_107 {
 				subList.add(queue.poll().val);
 			}
 			// 其实不需要在最后加一个逆序，只需要 LinkedList的从前面加
+			// 每次都加在头节点，就和 单链表 的 头插法 一个意思，就变成逆序的了
 			wrapList.add(0, subList);
 		}
 		return wrapList;

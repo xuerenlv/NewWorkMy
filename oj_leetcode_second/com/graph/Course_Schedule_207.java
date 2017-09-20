@@ -1,62 +1,95 @@
 package com.graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Course_Schedule_207 {
 
 	public static void main(String[] args) {
-		int[][] prerequisites = new int[3][2];
+		int[][] prerequisites = new int[1][2];
 		prerequisites[0][0] = 0;
 		prerequisites[0][1] = 1;
-		prerequisites[1][0] = 0;
-		prerequisites[1][1] = 2;
-		prerequisites[2][0] = 1;
-		prerequisites[2][1] = 2;
+		// prerequisites[1][0] = 1;
+		// prerequisites[1][1] = 2;
+		// prerequisites[2][0] = 1;
+		// prerequisites[2][1] = 2;
 
-		System.out.println(new Solution_Course_Schedule_207().canFinish(3, prerequisites));
+		System.out.println(new Solution_Course_Schedule_207().canFinish_new(2, prerequisites));
 	}
 
 }
 
 class Solution_Course_Schedule_207 {
+	// ************************************************************************
+	public boolean canFinish_new(int numCourses, int[][] prerequisites) {
+		ArrayList<Integer>[] adj_list = new ArrayList[numCourses];
 
-	// 想法是对的，只不过超时了，哈哈
-	public boolean canFinish(int numCourses, int[][] prerequisites) {
-		int[][] adj_vex = new int[numCourses][numCourses];
+		int[] ru_du_arr = new int[numCourses];
+		int count = 0;
 
 		for (int i = 0; i < prerequisites.length; i++) {
-			adj_vex[prerequisites[i][0]][prerequisites[i][1]] = 1;
+			if (adj_list[prerequisites[i][0]] == null)
+				adj_list[prerequisites[i][0]] = new ArrayList<>();
+			ru_du_arr[prerequisites[i][1]]++;
+			adj_list[prerequisites[i][0]].add(prerequisites[i][1]);
 		}
 
-		boolean[] huan = new boolean[1];
-		boolean[] visited = new boolean[numCourses];
+		Queue<Integer> qu = new LinkedList<>();
 		for (int i = 0; i < numCourses; i++) {
-			if (!visited[i]) {
-				Stack<Integer> stack = new Stack<Integer>();
-				dfs(adj_vex, numCourses, i, visited, huan, stack);
-				if (huan[0]) {
-					return false;
+			if (ru_du_arr[i] == 0) {
+				qu.offer(i);
+				count++;
+			}
+		}
+
+		while (!qu.isEmpty()) {
+			int index = qu.poll();
+			if (adj_list[index] == null)
+				continue;
+			for (int j = 0; j < adj_list[index].size(); j++) {
+				if (--ru_du_arr[adj_list[index].get(j)] == 0) {
+					qu.offer(adj_list[index].get(j));
+					count++;
 				}
 			}
 		}
 
-		return !huan[0];
+		return count == numCourses;
 	}
 
-	void dfs(int[][] adj_vex, int numCourses, int v_i, boolean[] visited, boolean[] huan, Stack<Integer> stack) {
-		if (stack.contains(v_i)) {
-			huan[0] = true;
-			return;
+	// ************************************************************************
+	public boolean canFinish_222(int numCourses, int[][] prerequisites) {
+		ArrayList[] graph = new ArrayList[numCourses];
+		for (int i = 0; i < numCourses; i++)
+			graph[i] = new ArrayList();
+
+		boolean[] visited = new boolean[numCourses];
+		for (int i = 0; i < prerequisites.length; i++) {
+			graph[prerequisites[i][1]].add(prerequisites[i][0]);
 		}
-		visited[v_i] = true;
-		stack.add(v_i);
-		for (int j = 0; j < numCourses; j++) {
-			if (j != v_i && adj_vex[v_i][j] > 0) {
-				dfs(adj_vex, numCourses, j, visited, huan, stack);
-			}
+
+		for (int i = 0; i < numCourses; i++) {
+			if (!dfs(graph, visited, i))
+				return false;
 		}
-		stack.pop();
+		return true;
+	}
+
+	// 正常的时候是可以继续进行深度优先搜索，不正常的时候是不可以进行深度优先搜索
+	private boolean dfs(ArrayList[] graph, boolean[] visited, int course) {
+		if (visited[course])
+			return false;
+
+		visited[course] = true;
+		for (int i = 0; i < graph[course].size(); i++) {
+			if (!dfs(graph, visited, (int) graph[course].get(i)))
+				return false;
+		}
+		visited[course] = false;
+		return true;
 	}
 
 	// 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222

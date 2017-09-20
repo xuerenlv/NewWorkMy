@@ -10,21 +10,22 @@ public class Comparator_Test {
 
 	public static void main(String[] args) {
 		List<Integer> li = new ArrayList<>();
-		
+
 		Random random = new Random();
-		for(int i=0;i<10;i++){
-			li.add(Math.abs(random.nextInt())%100);
+		for (int i = 0; i < 10; i++) {
+			li.add(Math.abs(random.nextInt()) % 100);
 		}
 		System.out.println(li.toString());
-		
-		Collections.sort(li,new Comparator<Integer>() {
+
+		Collections.sort(li, new Comparator<Integer>() {
 
 			@Override
+			// 递增
 			public int compare(Integer o1, Integer o2) {
-				return o1-o2;
+				return o1 - o2;
 			}
 		});
-		
+
 		System.out.println(li.toString());
 	}
 

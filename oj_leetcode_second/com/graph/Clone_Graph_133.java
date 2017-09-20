@@ -63,7 +63,8 @@ class Solution_Clone_Graph_133 {
 		queue.add(node);
 		while (!queue.isEmpty()) {
 			UndirectedGraphNode temp_node = queue.poll();
-			if (!map.containsKey(temp_node.label)) {
+			if (!map.containsKey(temp_node.label)) { // 在这个时候创建所有的节点，其实 map 还存在着
+														// visited 的作用
 				map.put(temp_node.label, new UndirectedGraphNode(temp_node.label));
 				for (UndirectedGraphNode temp_list : temp_node.neighbors) {
 					queue.add(temp_list);

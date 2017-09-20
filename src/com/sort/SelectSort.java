@@ -23,11 +23,11 @@ public class SelectSort {
 	}
 
 	static void selectSort(int[] nums) {
-		int e = nums.length - 1;
+		int n = nums.length;
 
-		for (int i = 0; i < e - 1; i++) {
+		for (int i = 0; i < n - 1; i++) {
 			int small_index = i + 1;
-			for (int j = i + 2; j <= e; j++) {
+			for (int j = i + 2; j < n; j++) {
 				if (nums[j] < nums[small_index])
 					small_index = j;
 			}

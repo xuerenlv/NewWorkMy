@@ -26,7 +26,6 @@ class Solution_Binary_Tree_Inorder_Traversal_94 {
 	void bin_inorder_with_iterative(TreeNode root, List<Integer> re) {
 		// 中序遍历非递归，使用 栈
 		Stack<TreeNode> stack = new Stack<TreeNode>();
-
 		TreeNode p = root;
 		while (p != null || !stack.isEmpty()) {
 			while (p != null) { // 左分支全部进栈
@@ -48,7 +47,7 @@ class Solution_Binary_Tree_Inorder_Traversal_94 {
 		if (root.left != null) {
 			bin_inorder_with_recresion(root.left, re);
 		}
-		re.add(root.val);
+		re.add(root.val); // 中序遍历，在中间遍历 root 节点
 		if (root.right != null) {
 			bin_inorder_with_recresion(root.right, re);
 		}

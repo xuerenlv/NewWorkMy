@@ -13,7 +13,7 @@ public class Reverse_Words_in_a_String_151 {
 class Solution_Reverse_Words_in_a_String_151 {
 
 	public String reverseWords_bralliant(String s) {
-		String[] words = s.split(" ");
+		String[] words = s.trim().split(" ");
 		StringBuilder sb = new StringBuilder();
 		int end = words.length - 1;
 		for (int i = 0; i <= end; i++) {
@@ -30,6 +30,7 @@ class Solution_Reverse_Words_in_a_String_151 {
 	// 这个比较好，在O(n)的情况下逆转
 	public String reverseWords_accepted_1(String s) {
 		String rs = "";
+		s = s.trim();
 		for (int i = s.length() - 1; i >= 0;) {
 			if (i < 0)
 				break;
@@ -41,8 +42,8 @@ class Solution_Reverse_Words_in_a_String_151 {
 
 			String t = "";
 			while (i >= 0 && s.charAt(i) != ' ')
-				t += s.charAt(i--);
-			t = reverseWords_i_to_j(t, 0, t.length() - 1);
+				t = s.charAt(i--) + t;
+			// t = reverseWords_i_to_j(t, 0, t.length() - 1);
 			rs = rs + t;
 		}
 		return rs;

@@ -53,6 +53,8 @@ class Solution_Decode_Ways_91 {
 
 		int tmp;
 		for (int i = 2; i <= len; i++) {
+			// 可以从那个位置跳上当前台阶，前一阶：要求当前这个位置不能是0，因为0是无法decode的
+			// 前2阶：要求当前字符与前一个字符构成的数字是可以decode的
 			// 检查当前字符是不是'0'
 			if (s.charAt(i - 1) != '0') {
 				numbers[i] = numbers[i - 1];

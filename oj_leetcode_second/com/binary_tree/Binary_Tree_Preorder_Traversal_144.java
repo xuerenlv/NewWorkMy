@@ -25,14 +25,13 @@ class Solution_Binary_Tree_Preorder_Traversal_144 {
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 
 		TreeNode p = root;
-		while (p != null || !stack.isEmpty()) {
+		stack.add(p);
+		while (!stack.isEmpty()) {
+			p = stack.pop();
 			while (p != null) {
 				re.add(p.val);
 				stack.add(p.right);
 				p = p.left;
-			}
-			if (!stack.isEmpty()) {
-				p = stack.pop();
 			}
 		}
 	}

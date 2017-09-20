@@ -9,9 +9,10 @@ public class t3 {
 //
 //		System.out.println(Arrays.binarySearch(nums, 0, 3, 4));
 		
+		testTryCatch();
 		
 		
-		System.out.println(Integer.parseInt("2817.09898"));
+//		System.out.println(Integer.parseInt("2817.09898"));
 
 	}
 

@@ -14,6 +14,7 @@ class Solution_Linked_List_Cycle_II_142 {
 	public ListNode detectCycle(ListNode head) {
 		if (head == null)
 			return null;
+		// 同时从根节点出发
 		ListNode p_slow = head;
 		ListNode p_fast = head;
 

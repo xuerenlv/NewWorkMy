@@ -11,6 +11,7 @@ public class Insertion_Sort_List_147 {
 class Solution_Insertion_Sort_List_147 {
 	// 使用插入排序，排序链表
 	// 对链表使用插入排序，实在是太优雅了
+	// 链表排序：插入排序，归并排序，都很好
 	public ListNode insertionSortList(ListNode head) {
 		if (head == null || head.next == null)
 			return head;

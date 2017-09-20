@@ -9,7 +9,7 @@ public class Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
 }
 
 class Solution_Lowest_Common_Ancestor_of_a_Binary_Search_Tree_235 {
-	// 更加好的做法，，改写成迭代的形式
+	// 更加好的做法，，改写成迭代的形式 ,, 基于迭代的形式，考虑到二叉搜索树的有序性质
 	public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
 		while (true) {
 			if (root.val > p.val && root.val > q.val)

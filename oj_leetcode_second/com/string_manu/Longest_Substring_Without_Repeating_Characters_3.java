@@ -37,7 +37,7 @@ class Solution_Longest_Substring_Without_Repeating_Characters_3_second {
 			char c = s.charAt(i);
 			if (hash.containsKey(c)) {
 				maxLen = Math.max(maxLen, i - dupNextIndex);
-				// System.out.println(i+" "+(hash.get(c) + 1)+" "+dupNextIndex);
+//				 System.out.println(i+" "+(hash.get(c) + 1)+" "+dupNextIndex);
 				dupNextIndex = Math.max(hash.get(c) + 1, dupNextIndex);
 			}
 			hash.put(c, i);

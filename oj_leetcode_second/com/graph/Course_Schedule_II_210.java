@@ -19,9 +19,7 @@ public class Course_Schedule_II_210 {
 
 		int[] re = new Solution_Course_Schedule_II_210().findOrder(3, prerequisites);
 		System.out.println(Arrays.toString(re));
-		
-		
-		
+
 	}
 
 }
@@ -31,49 +29,92 @@ public class Course_Schedule_II_210 {
 // Time Limit Exceeded
 
 class Solution_Course_Schedule_II_210 {
-	
-	public int[] findOrder_other_people(int numCourses, int[][] prerequisites) {
-		List<Set<Integer>> adjLists = new ArrayList<Set<Integer>>();  
-        for (int i = 0; i < numCourses; i++) {  
-            adjLists.add(new HashSet<Integer>());  
-        }  
-          
-        for (int i = 0; i < prerequisites.length; i++) {  
-            adjLists.get(prerequisites[i][1]).add(prerequisites[i][0]);  
-        }  
-          
-        int[] indegrees = new int[numCourses];  
-        for (int i = 0; i < numCourses; i++) {  
-            for (int x : adjLists.get(i)) {  
-                indegrees[x]++;  
-            }  
-        }  
-        
-        // queue 里面放入读为 0 的顶点
-        Queue<Integer> queue = new LinkedList<Integer>();  
-        for (int i = 0; i < numCourses; i++) {  
-            if (indegrees[i] == 0) {  
-                queue.offer(i);  
-            }  
-        }  
-          
-        int[] res = new int[numCourses];  
-        int count = 0;  
-        while (!queue.isEmpty()) {  
-            int cur = queue.poll();  
-            for (int x : adjLists.get(cur)) {  
-                indegrees[x]--;  
-                if (indegrees[x] == 0) {  
-                    queue.offer(x);  
-                }  
-            }  
-            res[count++] = cur;  
-        }  
-          
-        if (count == numCourses) return res;  
-        return new int[0];  
+
+	// 拓扑排序，使用邻接表存储图的方式最好（在时间复杂度上）
+	public int[] findOrder_other_people_new(int numCourses, int[][] prerequisites) {
+		List<Set<Integer>> adjLists = new ArrayList<Set<Integer>>();
+		for (int i = 0; i < numCourses; i++) {
+			adjLists.add(new HashSet<Integer>());
+		}
+
+		int[] indegrees = new int[numCourses];
+		for (int i = 0; i < prerequisites.length; i++) {
+			adjLists.get(prerequisites[i][1]).add(prerequisites[i][0]);
+			indegrees[prerequisites[i][0]]++;
+		}
+
+		// queue 里面放入读为 0 的顶点
+		Queue<Integer> queue = new LinkedList<Integer>();
+		for (int i = 0; i < numCourses; i++) {
+			if (indegrees[i] == 0) {
+				queue.offer(i);
+			}
+		}
+
+		int[] res = new int[numCourses];
+		int count = 0;
+		while (!queue.isEmpty()) {
+			int cur = queue.poll();
+			for (int x : adjLists.get(cur)) {
+				indegrees[x]--;
+				if (indegrees[x] == 0) {
+					queue.offer(x);
+				}
+			}
+			res[count++] = cur; // 拓扑排序，进入序列
+		}
+
+		if (count == numCourses)
+			return res;
+		else
+			return new int[0];
 	}
-	
+
+	// *********************************************************************************************************
+
+	public int[] findOrder_other_people(int numCourses, int[][] prerequisites) {
+		List<Set<Integer>> adjLists = new ArrayList<Set<Integer>>();
+		for (int i = 0; i < numCourses; i++) {
+			adjLists.add(new HashSet<Integer>());
+		}
+
+		for (int i = 0; i < prerequisites.length; i++) {
+			adjLists.get(prerequisites[i][1]).add(prerequisites[i][0]);
+		}
+
+		int[] indegrees = new int[numCourses];
+		for (int i = 0; i < numCourses; i++) {
+			for (int x : adjLists.get(i)) {
+				indegrees[x]++;
+			}
+		}
+
+		// queue 里面放入读为 0 的顶点
+		Queue<Integer> queue = new LinkedList<Integer>();
+		for (int i = 0; i < numCourses; i++) {
+			if (indegrees[i] == 0) {
+				queue.offer(i);
+			}
+		}
+
+		int[] res = new int[numCourses];
+		int count = 0;
+		while (!queue.isEmpty()) {
+			int cur = queue.poll();
+			for (int x : adjLists.get(cur)) {
+				indegrees[x]--;
+				if (indegrees[x] == 0) {
+					queue.offer(x);
+				}
+			}
+			res[count++] = cur;
+		}
+
+		if (count == numCourses)
+			return res;
+		return new int[0];
+	}
+
 	// 邻接矩阵有问题，下面尝试邻接表
 	// 建立入边表
 	// Time Limit Exceeded

@@ -29,6 +29,7 @@ class Solution_Unique_Binary_Search_Trees_II_95 {
 	}
 
 	// 感觉使用的是回溯法,是分治法
+	// 后序遍历
 	public List<TreeNode> generateTrees(int start, int end) {
 		List<TreeNode> trees = new ArrayList<TreeNode>();
 		if (start > end) {// start可以等于end，表明当前只处理一个 节点

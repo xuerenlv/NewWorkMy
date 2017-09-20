@@ -16,7 +16,7 @@ class Solution_Pascal_s_Triangle_II_119 {
 	// better
 	public List<Integer> getRow_2(int rowIndex) {
 		List<Integer> list = new ArrayList<Integer>();
-		if (rowIndex < 0)
+		if (rowIndex <= 0)
 			return list;
 
 		for (int i = 1; i <= rowIndex; i++) {

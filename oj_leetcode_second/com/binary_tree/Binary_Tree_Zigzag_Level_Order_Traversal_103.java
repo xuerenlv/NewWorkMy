@@ -31,12 +31,13 @@ class Solution_Binary_Tree_Zigzag_Level_Order_Traversal_103 {
 			if (lToR)
 				li.add(node.val);
 			else
-				li.add(0, node.val);
+				li.add(0, node.val); // 每次都在头节点插入，就相当于 r to l
 
 			if (node.left != null)
 				queue.add(node.left);
 			if (node.right != null)
 				queue.add(node.right);
+			// 一层一层的处理
 			if (--level == 0) {
 				level = queue.size();
 				res.add(new ArrayList<Integer>(li));
@@ -59,8 +60,7 @@ class Solution_Binary_Tree_Zigzag_Level_Order_Traversal_103 {
 			return;
 
 		if (sol.size() <= level) {
-			List<Integer> newLevel = new LinkedList<>();
-			sol.add(newLevel);
+			sol.add(new LinkedList<>());
 		}
 
 		List<Integer> collection = sol.get(level);

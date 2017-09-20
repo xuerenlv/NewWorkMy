@@ -14,6 +14,7 @@ public class Longest_Consecutive_Sequence_128 {
 
 class Solution_Longest_Consecutive_Sequence_128 {
 	// 这个就是运用了一个 list 的查找与删除
+	// 对于每一个元素进行前后向搜索，因为搜索的同时进行删除，所以不会出现一个元素被搜索了两次
 	public int longestConsecutive(int[] nums) {
 		List<Integer> container = new ArrayList<Integer>();
 		for (int i : nums) {

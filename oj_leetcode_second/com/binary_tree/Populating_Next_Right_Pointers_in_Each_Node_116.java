@@ -118,8 +118,7 @@ class Solution_Populating_Next_Right_Pointers_in_Each_Node_116 {
 			cur = 0;
 			count = qu.size();
 			while (cur < count) {
-				TreeLinkNode p = qu.getFirst();
-				qu.pop();
+				TreeLinkNode p = qu.pop();
 				if (cur + 1 < count) {
 					p.next = qu.getFirst();
 				} else if (cur + 1 == count) {

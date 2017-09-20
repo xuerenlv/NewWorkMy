@@ -1,27 +1,11 @@
-/**
- * 
- */
 package com.worksapp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
-/**
- * @author Xuehj
- *
- */
 public class Main_2 {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		InputReader in = new InputReader(System.in);
-		PrintWriter out = new PrintWriter(System.out);
+		Scanner in = new Scanner(System.in);
 
 		int n = in.nextInt();
 		int[] arr = new int[n];
@@ -32,49 +16,20 @@ public class Main_2 {
 		}
 
 		Tree tree = new Tree();
-		tree.add(0);
+		tree.add(0);// 先加 0 ，是因为可以是空集合。
 		int left_xor = 0, ans = 0;
 		for (int i = 0; i < n; i++) {
 			left_xor ^= arr[i];
 			all_xor ^= arr[i];
-			tree.add(left_xor);
+			tree.add(left_xor); // 每次都把前缀的异或值加入到字典树中，然后查找后缀的最大异或值
 			ans = Math.max(ans, all_xor ^ tree.find(all_xor));
 		}
 
-		out.println(ans);
-		out.close();
+		System.out.println(ans);
 	}
-
-	// read data
-	static class InputReader {
-		public BufferedReader reader;
-		public StringTokenizer tokenizer;
-
-		public InputReader(InputStream stream) {
-			reader = new BufferedReader(new InputStreamReader(stream), 32768);
-			tokenizer = null;
-		}
-
-		public String next() {
-			while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-				try {
-					tokenizer = new StringTokenizer(reader.readLine());
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
-			}
-			return tokenizer.nextToken();
-		}
-
-		public int nextInt() {
-			return Integer.parseInt(next());
-		}
-
-	}
-
 }
 
-// implement one prefix tree
+// implement one prefix tree， 在一组数中找一个数的最大异或值
 class TreeNode {
 	TreeNode zero, one;
 }
@@ -124,7 +79,6 @@ class Tree {
 					p = p.zero;
 				}
 			}
-
 			res = 2 * res + count;
 		}
 

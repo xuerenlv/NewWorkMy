@@ -8,7 +8,7 @@ import java.util.Set;
 public class t5 {
 
 	public static void main(String[] args) {
-		String[] arr = " 2 4 5 6 ".split(" ");
+		String[] arr = " 2 4 5 6 ".trim().split(" ");
 		System.out.println(Arrays.toString(arr));
 		System.out.println(arr[0].equals(""));
 	}

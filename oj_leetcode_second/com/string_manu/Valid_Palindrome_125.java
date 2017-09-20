@@ -46,7 +46,6 @@ class Solution_Valid_Palindrome_125 {
 			} else {
 				return false;
 			}
-
 		}
 
 		return true;

@@ -12,7 +12,8 @@ public class Sliding_Window_Maximum_239 {
 
 class Solution_Sliding_Window_Maximum_239 {
 
-	// 挺有技巧的，一遍遍历即可，用一个 双向链表（因为经常增删）
+	// 挺有技巧的，一遍遍历即可，用一个 双向链表（因为 可以从两个方向进行 增加 与 删除）
+
 	public int[] maxSlidingWindow(int[] nums, int k) {
 		int n = nums.length;
 		int[] re = new int[0];

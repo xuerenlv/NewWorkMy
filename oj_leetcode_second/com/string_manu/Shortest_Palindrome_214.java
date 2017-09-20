@@ -3,7 +3,7 @@ package com.string_manu;
 public class Shortest_Palindrome_214 {
 
 	public static void main(String[] args) {
-
+		System.out.println(new Solution_Shortest_Palindrome_214().shortestPalindrome__re("abcab"));
 	}
 
 }
@@ -14,6 +14,7 @@ class Solution_Shortest_Palindrome_214 {
 		int j = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {
 			if (s.charAt(i) == s.charAt(j)) {
+				// System.out.println(i + " " + j);
 				j += 1;
 			}
 		}
@@ -21,6 +22,7 @@ class Solution_Shortest_Palindrome_214 {
 			return s;
 		}
 		String suffix = s.substring(j);
+		// System.out.println(j + " " + suffix + " " + s);
 		return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, j)) + suffix;
 	}
 

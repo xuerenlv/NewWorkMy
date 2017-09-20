@@ -32,6 +32,7 @@ class Solution_Word_Ladder_II_126 {
 	}
 
 	// 就是一种广度优先遍历 ( 对于 队列 中存放的元素可以自己进行设计 )
+	// 每一个元素都带有一个 list 的广度优先搜索
 	public List<List<String>> findLadders(String beginWord, String endWord, Set<String> wordDict) {
 		List<List<String>> re = new ArrayList<>();
 		List<String> in = new ArrayList<>();
@@ -51,8 +52,8 @@ class Solution_Word_Ladder_II_126 {
 
 		while (!queue.isEmpty()) {
 			Pair pair = queue.poll();
-			
-			if(re_min_size!=0 && pair.come_here.size()>=re_min_size-1)
+
+			if (re_min_size != 0 && pair.come_here.size() > re_min_size)
 				return re;
 
 			for (String word : wordDict) {
@@ -66,7 +67,7 @@ class Solution_Word_Ladder_II_126 {
 					if (does_one(word, endWord)) {
 						here.add(endWord);
 						re.add(here);
-						re_min_size=here.size();
+						re_min_size = here.size();
 					} else {
 						queue.add(new Pair(word, here));
 					}

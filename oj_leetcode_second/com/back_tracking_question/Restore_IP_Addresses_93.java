@@ -16,6 +16,7 @@ public class Restore_IP_Addresses_93 {
 
 class Solution_Restore_IP_Addresses_93 {
 	// 很直观的解法，而且时间复杂度也挺低
+	// 总共 4 个分段，遍历所有可能的分段界限
 	public List<String> restoreIpAddresses_other(String s) {
 		List<String> res = new ArrayList<String>();
 		int len = s.length();
@@ -83,7 +84,7 @@ class Solution_Restore_IP_Addresses_93 {
 				}
 				houxuan = houxuan + add_str;
 				tranverse_str(s, start + i, end, part - 1, houxuan, re);
-				houxuan = houxuan.substring(0, houxuan.length() - add_str.length());
+				houxuan = houxuan.substring(0, houxuan.length() - add_str.length());// 不影响后来的回溯
 			}
 		}
 	}

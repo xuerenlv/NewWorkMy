@@ -14,6 +14,7 @@ public class Maximum_Gap_164 {
 class Solution_Maximum_Gap_164 {
 
 	// 桶排序，运用于搜索之中，很有趣
+	// 元素的最大间隔定在不同的桶之间
 	public int maximumGap(int[] nums) {
 		int len = nums.length;
 		if (len < 2)

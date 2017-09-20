@@ -32,13 +32,13 @@ class Solution_Copy_List_with_Random_Pointer_138 {
 		if (head == null)
 			return null;
 
-		Map<Integer, RandomListNode> map = new HashMap<>();
+		Map<Integer, RandomListNode> map = new HashMap<>(); // 使用 map 存放所有的节点
 		Stack<RandomListNode> stack = new Stack<RandomListNode>();
 
 		stack.add(head);
 		while (!stack.isEmpty()) {
 			RandomListNode temp_node = stack.pop();
-			if (!map.containsKey(temp_node.label)) {
+			if (!map.containsKey(temp_node.label)) {// 这里的 map 还起到了 visited 的作用
 				map.put(temp_node.label, new RandomListNode(temp_node.label));
 				if (temp_node.next != null) {
 					stack.push(temp_node.next);

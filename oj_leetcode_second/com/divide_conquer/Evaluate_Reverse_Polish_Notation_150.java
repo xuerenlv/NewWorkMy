@@ -15,6 +15,7 @@ public class Evaluate_Reverse_Polish_Notation_150 {
 
 class Solution_Evaluate_Reverse_Polish_Notation_150 {
 	// 使用一个栈，来计算逆波兰式
+	// 减法 与 除法 的先后次序不能乱
 	public int evalRPN(String[] tokens) {
 		int i = 0;
 		Stack<Integer> stack = new Stack<Integer>();

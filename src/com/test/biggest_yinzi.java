@@ -4,7 +4,7 @@ public class biggest_yinzi {
 
 	public static void main(String[] args) {
 		long s1 = System.currentTimeMillis();
-//		System.out.println(fibb_no_mem(50));
+		// System.out.println(fibb_no_mem(50));
 		long e1 = System.currentTimeMillis();
 
 		System.out.println((e1 - s1));
@@ -16,6 +16,7 @@ public class biggest_yinzi {
 		System.out.println((e2 - s2));
 	}
 
+	// 辗转相除法求最大共因子
 	static int biggest(int a, int b) {
 
 		if (a > b)

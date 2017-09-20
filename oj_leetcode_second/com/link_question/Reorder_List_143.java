@@ -42,7 +42,7 @@ class Solution_Reorder_List_143 {
 		ListNode re_list = null, s = null;
 		ListNode p = head;
 		while (p != null) {
-			s = new ListNode(p.val);
+			s = new ListNode(p.val); // 构建一个新的 list 用来存放逆转的链表
 			p = p.next;
 			s.next = re_list;
 			re_list = s;

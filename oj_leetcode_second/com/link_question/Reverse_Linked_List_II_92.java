@@ -25,8 +25,8 @@ class Solution_Reverse_Linked_List_II_92 {
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
 
-		ListNode pre = dummy, p, s, q;
-		for (int i = 0; i < m - 1; i++)
+		ListNode pre = dummy, p, s;
+		for (int i = 0; i < m - 1; i++) // 找到正向的第 m-1 个节点
 			pre = pre.next;
 
 		p = pre.next;

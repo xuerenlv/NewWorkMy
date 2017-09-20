@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Joseph_classical {
 
 	public static void main(String[] args) {
-		joseph_classical(6, 5);
+		joseph_classical(10, 5);
 	}
 	
 	//经典的Joseph问题

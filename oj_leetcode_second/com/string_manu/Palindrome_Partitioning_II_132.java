@@ -98,6 +98,8 @@ class Solution_Palindrome_Partitioning_II_132 {
 			}
 			return;
 		}
+		if (depth >= count[0])
+			return;
 		for (int i = start + 1; i <= end; i++) {
 			String test = s.substring(start, i);
 			if (isPalindrome(test)) {
